@@ -8,11 +8,11 @@ class HomeScreenViewModel : ViewModel() {
 
     private val repository = RandomActRepository
 
-    val visibleRandomActs = repository.allActs
+    val visibleRandomActs = repository.visibleActs
 
     fun loadRandomActs(limit: Int = 3) {
-        val acts = randomActs.shuffled().take(limit).distinctBy { it.id }
-        repository.loadActs(acts)
+        val newActs = randomActs.shuffled().take(limit).distinctBy { it.id }
+        repository.loadActs(newActs)
     }
 
     fun updateRandomActStatus(id: String, done: Boolean) {

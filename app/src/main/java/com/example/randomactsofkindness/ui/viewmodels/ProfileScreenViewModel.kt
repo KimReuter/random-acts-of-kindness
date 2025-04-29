@@ -6,6 +6,7 @@ import com.example.randomactsofkindness.data.RandomActRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import com.example.randomactsofkindness.data.randomActs
 
 class ProfileScreenViewModel : ViewModel() {
 
@@ -15,7 +16,7 @@ class ProfileScreenViewModel : ViewModel() {
         .map { list -> list.filter { it.done } }
         .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
-    val totalActs = repository.allActs
+    val totalActs = randomActs.size
 
     val points = completedActs.map { it.size * 10 }
         .stateIn(viewModelScope, SharingStarted.Eagerly, 0)

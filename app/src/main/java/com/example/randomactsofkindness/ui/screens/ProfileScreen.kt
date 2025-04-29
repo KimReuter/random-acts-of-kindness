@@ -27,7 +27,7 @@ fun ProfileScreen(viewModel: ProfileScreenViewModel = viewModel()) {
     val completedActs by viewModel.completedActs.collectAsState()
     val points by viewModel.points.collectAsState()
     val level by viewModel.level.collectAsState()
-    val totalActs by viewModel.totalActs.collectAsState()
+    val totalActs = viewModel.totalActs
 
     LazyColumn(
         modifier = Modifier
@@ -51,7 +51,7 @@ fun ProfileScreen(viewModel: ProfileScreenViewModel = viewModel()) {
                 ) {
                     ProfileStatsSection(level = level, points = points)
                     Spacer(modifier = Modifier.height(16.dp))
-                    ProgressBarSection(completed = completedActs.size, total = totalActs.size)
+                    ProgressBarSection(completed = completedActs.size, total = totalActs)
                 }
 
             }

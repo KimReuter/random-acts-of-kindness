@@ -56,8 +56,6 @@ fun ReasonCard() {
             Text(
                 text = reasons.random().text,
                 fontSize = 20.sp,
-                fontFamily = FontFamily.Monospace,
-                fontWeight = FontWeight.Medium,
                 lineHeight = 28.sp,
                 color = Color.Gray
             )
