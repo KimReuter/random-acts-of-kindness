@@ -96,8 +96,10 @@ fun HomeScreen(viewModel: HomeScreenViewModel = viewModel()) {
         Scaffold(
             containerColor = Color.Transparent,
             floatingActionButton = {
-                FloatingActionButton(onClick = { viewModel.loadRandomActs() }) {
-                    Icon(imageVector = Icons.Filled.Refresh, contentDescription = "Refresh")
+                if (selectedTab == TabItem.Home) {
+                    FloatingActionButton(onClick = { viewModel.loadRandomActs() }) {
+                        Icon(imageVector = Icons.Filled.Refresh, contentDescription = "Refresh")
+                    }
                 }
             },
             bottomBar = {
@@ -143,19 +145,21 @@ fun HomeScreen(viewModel: HomeScreenViewModel = viewModel()) {
                     }
                 },
                 profileScreenContent = {
-
+                    ProfileScreen()
                 }
             )
         }
 
         if (openSheet && selectedRandomAct != null) {
-            RandomActDetailSheet(
-                randomAct = selectedRandomAct!!,
-                onDismiss = { openSheet = false },
-                onCheckedChange = { checked ->
-                    viewModel.updateRandomActStatus(selectedRandomAct!!.id, checked)
-                }
-            )
+            selectedRandomAct?.let { act ->
+                RandomActDetailSheet(
+                    randomAct = act,
+                    onDismiss = { openSheet = false },
+                    onCheckedChange = { checked ->
+                        viewModel.updateRandomActStatus(act.id.toString(), checked)
+                    }
+                )
+            }
         }
     }
 }
