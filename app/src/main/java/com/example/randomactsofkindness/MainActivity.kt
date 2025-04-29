@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.randomactsofkindness.ui.screens.HomeScreen
 import com.example.randomactsofkindness.ui.theme.RandomActsOfKindnessTheme
+import kotlinx.serialization.Serializable
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
