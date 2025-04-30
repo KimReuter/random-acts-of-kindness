@@ -16,7 +16,7 @@ class ProfileScreenViewModel : ViewModel() {
         .map { list -> list.filter { it.done } }
         .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
-    val totalActs = randomActs.size
+    val numberOfActs = randomActs.size
 
     val points = completedActs.map { it.size * 10 }
         .stateIn(viewModelScope, SharingStarted.Eagerly, 0)

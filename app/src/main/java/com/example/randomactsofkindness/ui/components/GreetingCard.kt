@@ -2,6 +2,7 @@ package com.example.randomactsofkindness.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -19,27 +20,28 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun GreetingCard() {
-    Card(
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.75f)),
+    GlassMorphismCard(
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 8.dp)
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        blurRadius = 32.dp
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
                 text = "Hey Kim 🌞",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.SansSerif
+                fontFamily = FontFamily.SansSerif,
+                color = Color.White
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
                 text = "Bereit für eine gute Tat?",
                 fontSize = 18.sp,
-                color = Color.Gray,
+                color = Color.White.copy(alpha = 0.9f),
                 fontFamily = FontFamily.SansSerif
             )
         }
     }
 }
+

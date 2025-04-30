@@ -6,8 +6,10 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,6 +17,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
@@ -127,11 +131,16 @@ fun HomeScreen(viewModel: HomeScreenViewModel = viewModel()) {
                 onTabChange = { selectedTab = it },
                 innerPadding = innerPadding,
                 homeScreenContent = {
-                    Column(
-                        modifier = Modifier.padding(innerPadding).fillMaxSize()
+                    LazyColumn (
+                        contentPadding = PaddingValues(top = 8.dp, bottom = 80.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding)
                     ) {
-                        GreetingCard()
-                        randomActs.forEach { randomAct ->
+                        item { GreetingCard() }
+
+                        items(randomActs) { randomAct ->
                             RandomActCard(
                                 randomAct = randomAct,
                                 isRotating = openSheet && selectedRandomAct?.id == randomAct.id,
@@ -141,7 +150,8 @@ fun HomeScreen(viewModel: HomeScreenViewModel = viewModel()) {
                                 }
                             )
                         }
-                        ReasonCard()
+
+                        item { ReasonCard() }
                     }
                 },
                 profileScreenContent = {

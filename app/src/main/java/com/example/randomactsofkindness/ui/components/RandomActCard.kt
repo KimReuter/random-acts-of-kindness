@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.randomactsofkindness.data.RandomAct
@@ -38,13 +39,12 @@ fun RandomActCard(
         animationSpec = tween(durationMillis = 300)
     )
 
-    Card(
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.75f)),
+    GlassMorphismCard(
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 8.dp)
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable { onClick() },
+        blurRadius = 24.dp
     ) {
         Row(
             modifier = Modifier.padding(16.dp),
@@ -53,8 +53,9 @@ fun RandomActCard(
             Text(
                 text = randomAct.title,
                 modifier = Modifier.weight(1f),
+                fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
-                color = Color.Gray,
+                color = Color.White,
                 fontFamily = FontFamily.SansSerif
             )
             Spacer(modifier = Modifier.height(8.dp))

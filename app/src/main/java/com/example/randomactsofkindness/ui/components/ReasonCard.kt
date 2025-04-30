@@ -24,12 +24,11 @@ import androidx.compose.ui.text.font.FontWeight
 @Composable
 fun ReasonCard() {
 
-    Card(
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.75f)),
+    GlassMorphismCard(
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 8.dp)
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        blurRadius = 24.dp
     ) {
         Column(
             modifier = Modifier
@@ -38,8 +37,8 @@ fun ReasonCard() {
             Text(
                 text = "Dein Grund, Gutes zu tun ♥️",
                 fontSize = 18.sp,
-                fontWeight = FontWeight.Medium,
-                color = Color.DarkGray,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
                 fontFamily = FontFamily.SansSerif
             )
 
@@ -49,7 +48,7 @@ fun ReasonCard() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(1.dp),
-                color = Color.LightGray.copy(alpha = 0.6f)
+                color = Color.White.copy(alpha = 0.9f)
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -57,7 +56,7 @@ fun ReasonCard() {
                 text = reasons.random().text,
                 fontSize = 20.sp,
                 lineHeight = 28.sp,
-                color = Color.Gray
+                color = Color.White
             )
         }
     }
