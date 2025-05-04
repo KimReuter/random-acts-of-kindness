@@ -13,9 +13,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.randomactsofkindness.ui.components.CompletedActItem
-import com.example.randomactsofkindness.ui.components.ProfileStatsSection
-import com.example.randomactsofkindness.ui.components.ProgressBarSection
+import com.example.randomactsofkindness.ui.components.GlassMorphismCard
+import com.example.randomactsofkindness.ui.components.profilescreen.CompletedActItem
+import com.example.randomactsofkindness.ui.components.profilescreen.ProfileStatsSection
+import com.example.randomactsofkindness.ui.components.profilescreen.ProgressBarSection
 import com.example.randomactsofkindness.ui.viewmodels.ProfileScreenViewModel
 
 @Composable
@@ -31,16 +32,12 @@ fun ProfileScreen(viewModel: ProfileScreenViewModel = viewModel()) {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        item { Text("Dein Profil", fontSize = 28.sp, fontWeight = FontWeight.Bold) }
-
         item {
 
-            Card(
-                shape = RoundedCornerShape(12.dp),
-                modifier = Modifier.fillMaxWidth(),
-                colors = androidx.compose.material3.CardDefaults.cardColors(
-                    containerColor = Color.White.copy(alpha = 0.7f)
-                )
+            GlassMorphismCard(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                blurRadius = 32.dp
             ) {
                 Column(
                     modifier = Modifier.padding(16.dp)
@@ -53,7 +50,12 @@ fun ProfileScreen(viewModel: ProfileScreenViewModel = viewModel()) {
             }
         }
 
-        item { Text("Erledigte Aufgaben", fontSize = 20.sp, fontWeight = FontWeight.SemiBold) }
+        item { Text(
+            text = "Erledigte Aufgaben",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = Color.White
+        ) }
 
         items(completedActs) { act ->
             CompletedActItem(act)

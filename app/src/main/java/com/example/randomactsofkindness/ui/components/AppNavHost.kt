@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.randomactsofkindness.data.TabItem
+import com.example.randomactsofkindness.ui.helpers.TabItem
 import kotlinx.serialization.Serializable
 
 @Serializable object HomeRoute

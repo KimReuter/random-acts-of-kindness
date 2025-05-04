@@ -1,5 +1,4 @@
-package com.example.randomactsofkindness.data
-
+package com.example.randomactsofkindness.ui.helpers
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -12,6 +11,6 @@ enum class TabItem(
     val route: Any,
     val tabIcon: ImageVector
 ) {
-    Home(HomeRoute, Icons.Default.Home),
-    Profile(ProfileRoute, Icons.Default.Person)
+    HOME(HomeRoute, Icons.Default.Home),
+    PROFILE(ProfileRoute, Icons.Default.Person)
 }

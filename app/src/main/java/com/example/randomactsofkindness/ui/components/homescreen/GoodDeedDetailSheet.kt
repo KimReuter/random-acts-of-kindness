@@ -1,4 +1,4 @@
-package com.example.randomactsofkindness.ui.components
+package com.example.randomactsofkindness.ui.components.homescreen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,7 +11,6 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
@@ -23,20 +22,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.randomactsofkindness.data.RandomAct
+import com.example.randomactsofkindness.data.GoodDeed
+import com.example.randomactsofkindness.ui.components.profilescreen.InfoRow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RandomActDetailSheet(
+fun GoodDeedDetailSheet(
     modifier: Modifier = Modifier,
-    randomAct: RandomAct,
+    goodDeed: GoodDeed,
     onDismiss: () -> Unit,
     onCheckedChange: (Boolean) -> Unit
 ) {
-    var isChecked by remember { mutableStateOf(randomAct.done) }
+    var isChecked by remember { mutableStateOf(goodDeed.done) }
 
     val sheetState = rememberModalBottomSheetState(
-        skipPartiallyExpanded = true, // ← das ist der erste Parameter
+        skipPartiallyExpanded = true,
         confirmValueChange = { true }
     )
 
@@ -54,23 +54,23 @@ fun RandomActDetailSheet(
                 .fillMaxWidth()
         ) {
             Text(
-                text = randomAct.title,
+                text = goodDeed.title,
                 style = MaterialTheme.typography.headlineSmall
             )
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            Text(text = randomAct.description)
+            Text(text = goodDeed.description)
 
             Spacer(modifier = Modifier.height(24.dp))
 
             Column(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                InfoRow(emoji = "⭐️", label = "Schwierigkeit: ${randomAct.difficulty.label}")
-                InfoRow(emoji = "💰", label = "Kosten: ${randomAct.cost.label}")
-                InfoRow(emoji = "⏳", label = "Zeitaufwand: ${randomAct.timeRequired.label}")
-                InfoRow(emoji = "👥", label = "Sozial: ${randomAct.socialInteraction.label}")
+                InfoRow(emoji = "⭐️", label = "Schwierigkeit: ${goodDeed.difficulty.label}")
+                InfoRow(emoji = "💰", label = "Kosten: ${goodDeed.requiredMoney.label}")
+                InfoRow(emoji = "⏳", label = "Zeitaufwand: ${goodDeed.timeRequired.label}")
+                InfoRow(emoji = "👥", label = "Sozial: ${goodDeed.socialInteraction.label}")
             }
 
             Spacer(modifier = Modifier.height(24.dp))

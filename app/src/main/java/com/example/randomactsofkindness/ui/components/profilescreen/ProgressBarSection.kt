@@ -1,7 +1,5 @@
-package com.example.randomactsofkindness.ui.components
+package com.example.randomactsofkindness.ui.components.profilescreen
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -26,9 +24,9 @@ fun ProgressBarSection(completed: Int, total: Int) {
             color = MaterialTheme.colorScheme.primary
         )
         Text(
-            "$completed von $total guten Taten erledigt",
+            text = "$completed von $total guten Taten erledigt",
             modifier = Modifier.padding(top = 4.dp),
-            color = Color.Black,
+            color = Color.White,
             fontSize = 14.sp
         )
     }
